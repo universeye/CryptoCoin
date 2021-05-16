@@ -13,6 +13,18 @@
 		BF5F72E3264E278D00DBFAE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F72E1264E278D00DBFAE7 /* Main.storyboard */; };
 		BF5F72E5264E279000DBFAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF5F72E4264E279000DBFAE7 /* Assets.xcassets */; };
 		BF5F72E8264E279000DBFAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5F72E6264E279000DBFAE7 /* LaunchScreen.storyboard */; };
+		BF5F72F0264E2AFC00DBFAE7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F72EF264E2AFC00DBFAE7 /* NetworkManager.swift */; };
+		BF5F72F2264E317C00DBFAE7 /* APIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F72F1264E317C00DBFAE7 /* APIEndPoint.swift */; };
+		BF5F72F4264E3FFB00DBFAE7 /* CurrencyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F72F3264E3FFB00DBFAE7 /* CurrencyResponse.swift */; };
+		BF5F72F6264E420F00DBFAE7 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F72F5264E420F00DBFAE7 /* APIError.swift */; };
+		BF5F72FA264E6D0800DBFAE7 /* CyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F72F9264E6D0800DBFAE7 /* CyLabel.swift */; };
+		BF5F72FC264EBC1500DBFAE7 /* DogeTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F72FB264EBC1500DBFAE7 /* DogeTableCellTableViewCell.swift */; };
+		BF5F7302264FB4E000DBFAE7 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F7301264FB4DF00DBFAE7 /* Date+Extension.swift */; };
+		BF5F7304264FB59900DBFAE7 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F7303264FB59900DBFAE7 /* String+Extension.swift */; };
+		BF5F730A264FEB6900DBFAE7 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F7309264FEB6900DBFAE7 /* TabBarVC.swift */; };
+		BF5F730D2650F8CC00DBFAE7 /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F730C2650F8CC00DBFAE7 /* HomePageVC.swift */; };
+		BF5F730F2650FA2400DBFAE7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F730E2650FA2400DBFAE7 /* UIViewController+Extension.swift */; };
+		BF5F73112650FC6A00DBFAE7 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F73102650FC6A00DBFAE7 /* APIKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +36,18 @@
 		BF5F72E4264E279000DBFAE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF5F72E7264E279000DBFAE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF5F72E9264E279000DBFAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF5F72EF264E2AFC00DBFAE7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BF5F72F1264E317C00DBFAE7 /* APIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndPoint.swift; sourceTree = "<group>"; };
+		BF5F72F3264E3FFB00DBFAE7 /* CurrencyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyResponse.swift; sourceTree = "<group>"; };
+		BF5F72F5264E420F00DBFAE7 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		BF5F72F9264E6D0800DBFAE7 /* CyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyLabel.swift; sourceTree = "<group>"; };
+		BF5F72FB264EBC1500DBFAE7 /* DogeTableCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogeTableCellTableViewCell.swift; sourceTree = "<group>"; };
+		BF5F7301264FB4DF00DBFAE7 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		BF5F7303264FB59900DBFAE7 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		BF5F7309264FEB6900DBFAE7 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		BF5F730C2650F8CC00DBFAE7 /* HomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
+		BF5F730E2650FA2400DBFAE7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		BF5F73102650FC6A00DBFAE7 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +81,66 @@
 			isa = PBXGroup;
 			children = (
 				BF5F72DB264E278D00DBFAE7 /* AppDelegate.swift */,
+				BF5F7309264FEB6900DBFAE7 /* TabBarVC.swift */,
 				BF5F72DD264E278D00DBFAE7 /* SceneDelegate.swift */,
-				BF5F72DF264E278D00DBFAE7 /* ViewController.swift */,
+				BF5F730B2650F87A00DBFAE7 /* CryptoTrack */,
+				BF5F7306264FC29B00DBFAE7 /* DogeCoin */,
+				BF5F72F8264E506800DBFAE7 /* Network */,
+				BF5F72F7264E505B00DBFAE7 /* Model */,
+				BF5F7305264FBA5800DBFAE7 /* Extension */,
 				BF5F72E1264E278D00DBFAE7 /* Main.storyboard */,
 				BF5F72E4264E279000DBFAE7 /* Assets.xcassets */,
 				BF5F72E6264E279000DBFAE7 /* LaunchScreen.storyboard */,
 				BF5F72E9264E279000DBFAE7 /* Info.plist */,
+				BF5F73102650FC6A00DBFAE7 /* APIKeys.swift */,
 			);
 			path = CyCoin;
+			sourceTree = "<group>";
+		};
+		BF5F72F7264E505B00DBFAE7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF5F72F3264E3FFB00DBFAE7 /* CurrencyResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BF5F72F8264E506800DBFAE7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BF5F72EF264E2AFC00DBFAE7 /* NetworkManager.swift */,
+				BF5F72F1264E317C00DBFAE7 /* APIEndPoint.swift */,
+				BF5F72F5264E420F00DBFAE7 /* APIError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BF5F7305264FBA5800DBFAE7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BF5F7301264FB4DF00DBFAE7 /* Date+Extension.swift */,
+				BF5F7303264FB59900DBFAE7 /* String+Extension.swift */,
+				BF5F730E2650FA2400DBFAE7 /* UIViewController+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		BF5F7306264FC29B00DBFAE7 /* DogeCoin */ = {
+			isa = PBXGroup;
+			children = (
+				BF5F72DF264E278D00DBFAE7 /* ViewController.swift */,
+				BF5F72F9264E6D0800DBFAE7 /* CyLabel.swift */,
+				BF5F72FB264EBC1500DBFAE7 /* DogeTableCellTableViewCell.swift */,
+			);
+			path = DogeCoin;
+			sourceTree = "<group>";
+		};
+		BF5F730B2650F87A00DBFAE7 /* CryptoTrack */ = {
+			isa = PBXGroup;
+			children = (
+				BF5F730C2650F8CC00DBFAE7 /* HomePageVC.swift */,
+			);
+			path = CryptoTrack;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +213,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF5F72F0264E2AFC00DBFAE7 /* NetworkManager.swift in Sources */,
+				BF5F7304264FB59900DBFAE7 /* String+Extension.swift in Sources */,
+				BF5F72F2264E317C00DBFAE7 /* APIEndPoint.swift in Sources */,
 				BF5F72E0264E278D00DBFAE7 /* ViewController.swift in Sources */,
+				BF5F730F2650FA2400DBFAE7 /* UIViewController+Extension.swift in Sources */,
+				BF5F72F4264E3FFB00DBFAE7 /* CurrencyResponse.swift in Sources */,
+				BF5F73112650FC6A00DBFAE7 /* APIKeys.swift in Sources */,
+				BF5F72FA264E6D0800DBFAE7 /* CyLabel.swift in Sources */,
+				BF5F7302264FB4E000DBFAE7 /* Date+Extension.swift in Sources */,
 				BF5F72DC264E278D00DBFAE7 /* AppDelegate.swift in Sources */,
+				BF5F72FC264EBC1500DBFAE7 /* DogeTableCellTableViewCell.swift in Sources */,
 				BF5F72DE264E278D00DBFAE7 /* SceneDelegate.swift in Sources */,
+				BF5F730A264FEB6900DBFAE7 /* TabBarVC.swift in Sources */,
+				BF5F72F6264E420F00DBFAE7 /* APIError.swift in Sources */,
+				BF5F730D2650F8CC00DBFAE7 /* HomePageVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +384,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dzhiphop.CyCoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,7 +403,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dzhiphop.CyCoin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
