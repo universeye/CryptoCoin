@@ -26,7 +26,7 @@ extension UIViewController {
         
         let activityIndicator = UIActivityIndicatorView(style: .large)
         containerView.addSubview(activityIndicator)
-        
+        containerView.bringSubviewToFront(activityIndicator)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

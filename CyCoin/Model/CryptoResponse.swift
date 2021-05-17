@@ -10,5 +10,5 @@ import Foundation
 struct CryptoResponse: Codable {
     let asset_id: String
     let name: String
-    let price_usd: Float
+    let price_usd: Float?
 }

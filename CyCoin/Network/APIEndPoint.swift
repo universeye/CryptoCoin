@@ -10,10 +10,16 @@ import Foundation
 enum CurrencyAPI {
     case getDogeCoin
     case cryptoTracker
+    case cryptoTrackerIcon
 }
 
 
 extension CurrencyAPI {
+    
+    var cyptoCoin: String {
+        return "BTC;ETH;DOGE;XRP;NMC;USDT"
+    }
+    
     var urlRequest: URLRequest {
         return URLRequest(url: URL(string: self.baseURL.appendingPathComponent(self.path).absoluteString.removingPercentEncoding!)!)
     }
@@ -23,7 +29,7 @@ extension CurrencyAPI {
         case .getDogeCoin:
             return URL(string: "https://pro-api.coinmarketcap.com/v1/")!
             
-        case .cryptoTracker:
+        case .cryptoTracker, .cryptoTrackerIcon:
             return URL(string: "https://rest.coinapi.io/v1/")!
         }
     }
@@ -34,9 +40,11 @@ extension CurrencyAPI {
             return "cryptocurrency/quotes/latest" + "?" + "slug=dogecoin&CMC_PRO_API_KEY=" + SecretAPIKeys.coinMarketCap.rawValue
             
         case .cryptoTracker:
-            return "assets/BTC;ETH;DOGE/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue
-        }
+            return "assets/" + self.cyptoCoin + "/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue
         
+        case .cryptoTrackerIcon:
+            return "assets/icons/55/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue
+        }
     }
 }
 

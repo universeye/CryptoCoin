@@ -14,7 +14,9 @@ class HomePageVC: UIViewController {
     
     //MARK: - Properties
     private var data: [CryptoResponse] = []
-    var refreshControl = UIRefreshControl()
+    private var refreshControl = UIRefreshControl()
+    private var imageURLViewModel: [String: String] = [:]
+    private let coinArray = ["BTC","XRP","NMC","USDT","DOGE","ETH"]
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -29,10 +31,19 @@ class HomePageVC: UIViewController {
     //MARK: - Apps Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         getCurrency()
         configureHomePageVC()
-        
-        
+        configureTableView()
+        getImageURL() {
+            
+//            for coin in self.coinArray {
+//                if let imageurl = self.imageURLViewModel[coin] {
+//                    print(imageurl)
+//                }
+//            }
+            
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,7 +52,9 @@ class HomePageVC: UIViewController {
         tableView.frame = view.bounds
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
     
     //MARK: - UI layout
     private func configureHomePageVC() {
@@ -65,7 +78,10 @@ class HomePageVC: UIViewController {
     
     //MARK: - Functional
     private func getCurrency() {
-        showLoadingView()
+        DispatchQueue.main.async {
+            self.showLoadingView()
+        }
+        
         NetworkManager.shared.getCurrency(from: .cryptoTracker) { [weak self](results: Result<[CryptoResponse], APIError>) in
             guard let self = self else { return }
             switch results {
@@ -75,11 +91,11 @@ class HomePageVC: UIViewController {
                 DispatchQueue.main.async {
                     self.dimissLoadingView()
                     self.refreshControl.endRefreshing()
-                    self.configureTableView()
+                    self.tableView.reloadData()
                 }
                 
             case .failure(let apiError):
-                print(apiError.rawValue)
+                print("Error getting currency: \(apiError.rawValue)")
             }
         }
     }
@@ -89,7 +105,29 @@ class HomePageVC: UIViewController {
         print("refreshing....")
         getCurrency()
     }
-
+    
+    
+    private func getImageURL(completion: @escaping () -> Void) {
+        NetworkManager.shared.getCurrency(from: .cryptoTrackerIcon) { [weak self] (results: Result<[CryptoIconResponse]
+        , APIError>) in
+            
+            guard let self = self else { return }
+            switch results {
+            
+            case .success(let imageurls):
+               
+                for index in 0..<30 {
+                    self.imageURLViewModel.updateValue(imageurls[index].url ?? "NA", forKey: imageurls[index].asset_id)
+                }
+                
+                
+                completion()
+            case .failure(let error):
+                print("Error fetching imageUrl: \(error.localizedDescription)")
+            }
+        }
+    }
+   
 }
 
 
@@ -104,6 +142,12 @@ extension HomePageVC: UITableViewDelegate, UITableViewDataSource {
             fatalError()
         }
         cell.set(data: self.data, indexPath: indexPath.row)
+        
+//        if let imageurll = self.imageURLViewModel[self.data[indexPath.row].asset_id] {
+//            cell.downloadImage(from: imageurll)
+//        }
+//
+        
         return cell
     }
     

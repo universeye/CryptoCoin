@@ -19,7 +19,15 @@ class CryptoListCell: UITableViewCell {
         return formatter
     }()
     
-    let logoImage = UIImageView(frame: .zero)
+    let logoImage: UIImageView = {
+        let imageview = UIImageView(frame: .zero)
+        let placeholder = UIImage(named: "Dogecoin_Logo")
+        imageview.image = placeholder
+        imageview.translatesAutoresizingMaskIntoConstraints = false
+        return imageview
+    }()
+    
+    let cache = NetworkManager.shared.cache
     let cryptoName = CyTrackerLabel(textSize: 18, textAlignment: .left, textColor: .label)
     let idLabel = CyTrackerLabel(textSize: 15, textAlignment: .left, textColor: .gray)
     let dollar = CyTrackerLabel(textSize: 20, textAlignment: .right, textColor: .systemGreen)
@@ -36,7 +44,7 @@ class CryptoListCell: UITableViewCell {
     }
     
     func set(data: [CryptoResponse], indexPath: Int) {
-        let number = NSNumber(value: data[indexPath].price_usd)
+        let number = NSNumber(value: data[indexPath].price_usd ?? 1)
         let string = Self.formatter.string(from: number)
         dollar.text = string
         cryptoName.text = data[indexPath].name
@@ -68,8 +76,6 @@ class CryptoListCell: UITableViewCell {
     }
     
     private func configureImage() {
-        logoImage.image = UIImage(named: "Dogecoin_Logo")
-        logoImage.translatesAutoresizingMaskIntoConstraints = false
         addSubview(logoImage)
         
         NSLayoutConstraint.activate([
@@ -81,6 +87,40 @@ class CryptoListCell: UITableViewCell {
     }
     
     
+    
+    func downloadImage(from urlString: String) {
+        let cacheKey = NSString(string: urlString)
+        
+        if let image = cache.object(forKey: cacheKey) {
+            imageView?.image = image
+        }
+        guard let url = URL(string: urlString) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) {  [weak self] (data, response, error) in
+            guard let self = self else { return }
+            if error != nil {
+                return
+            }
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            guard let image = UIImage(data: data) else {
+                return
+            }
+            
+            self.cache.setObject(image, forKey: cacheKey)
+            DispatchQueue.main.async {
+                self.imageView?.image = image
+                
+            }
+        }
+        
+        task.resume()
+    }
     
     
     
