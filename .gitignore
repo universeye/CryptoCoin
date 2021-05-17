@@ -37,9 +37,12 @@ DerivedData/
 *.dSYM.zip
 *.dSYM
 
-#Ignore API Keys
+## Ignore API Keys
 CyCoin/APIKeys.swift
 APIKeys.swift
+CyCoin/APIKeys2.swift
+APIKeys2.swift
+
 
 ## Playgrounds
 timeline.xctimeline
