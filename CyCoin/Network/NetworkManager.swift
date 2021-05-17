@@ -16,8 +16,8 @@ final class NetworkManager {
         
     }
     
-    func getCurrency(from endPoint: CurrencyAPI,
-                     completion: @escaping (Result<CurrencyResponse, APIError>) -> Void) {
+    func getCurrency<T: Codable>(from endPoint: CurrencyAPI,
+                     completion: @escaping (Result<T, APIError>) -> Void) {
         print("getting currency from: \(endPoint.urlRequest)")
         
         let task = URLSession.shared.dataTask(with: endPoint.urlRequest) { (data, response, error) in
@@ -46,7 +46,7 @@ final class NetworkManager {
                 let decoder = JSONDecoder()
                 //decoder.keyDecodingStrategy = .convertFromSnakeCase
                 //decoder.dateDecodingStrategy = .iso8601
-                let currencys = try decoder.decode(CurrencyResponse.self, from: data)
+                let currencys = try decoder.decode(T.self, from: data)
                 completion(.success(currencys))
             } catch let decodingError {
                 print("error 5")

@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         tableView.tableFooterView = UIView(frame: .zero) //clear unused cell
         createTableHeader()
         
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        //refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
     
     private func getCurrency() {
         showLoadingView()
-        NetworkManager.shared.getCurrency(from: .getDogeCoin) { [weak self] results in
+        NetworkManager.shared.getCurrency(from: .getDogeCoin) { [weak self] (results: Result<CurrencyResponse, APIError>) in
             guard let self = self else { return }
             self.dimissLoadingView()
             switch results {

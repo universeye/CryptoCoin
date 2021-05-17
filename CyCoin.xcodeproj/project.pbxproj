@@ -25,6 +25,9 @@
 		BF5F730D2650F8CC00DBFAE7 /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F730C2650F8CC00DBFAE7 /* HomePageVC.swift */; };
 		BF5F730F2650FA2400DBFAE7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F730E2650FA2400DBFAE7 /* UIViewController+Extension.swift */; };
 		BF5F73112650FC6A00DBFAE7 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F73102650FC6A00DBFAE7 /* APIKeys.swift */; };
+		BF5F73132651488400DBFAE7 /* CryptoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F73122651488400DBFAE7 /* CryptoListCell.swift */; };
+		BF5F7315265151D000DBFAE7 /* CryptoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F7314265151D000DBFAE7 /* CryptoResponse.swift */; };
+		BF5F731726515DF300DBFAE7 /* CyTrackerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		BF5F730C2650F8CC00DBFAE7 /* HomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 		BF5F730E2650FA2400DBFAE7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		BF5F73102650FC6A00DBFAE7 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		BF5F73122651488400DBFAE7 /* CryptoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListCell.swift; sourceTree = "<group>"; };
+		BF5F7314265151D000DBFAE7 /* CryptoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoResponse.swift; sourceTree = "<group>"; };
+		BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyTrackerLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				BF5F72F3264E3FFB00DBFAE7 /* CurrencyResponse.swift */,
+				BF5F7314265151D000DBFAE7 /* CryptoResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				BF5F730C2650F8CC00DBFAE7 /* HomePageVC.swift */,
+				BF5F73122651488400DBFAE7 /* CryptoListCell.swift */,
+				BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */,
 			);
 			path = CryptoTrack;
 			sourceTree = "<group>";
@@ -218,6 +227,8 @@
 				BF5F72F2264E317C00DBFAE7 /* APIEndPoint.swift in Sources */,
 				BF5F72E0264E278D00DBFAE7 /* ViewController.swift in Sources */,
 				BF5F730F2650FA2400DBFAE7 /* UIViewController+Extension.swift in Sources */,
+				BF5F731726515DF300DBFAE7 /* CyTrackerLabel.swift in Sources */,
+				BF5F7315265151D000DBFAE7 /* CryptoResponse.swift in Sources */,
 				BF5F72F4264E3FFB00DBFAE7 /* CurrencyResponse.swift in Sources */,
 				BF5F73112650FC6A00DBFAE7 /* APIKeys.swift in Sources */,
 				BF5F72FA264E6D0800DBFAE7 /* CyLabel.swift in Sources */,
@@ -225,6 +236,7 @@
 				BF5F72DC264E278D00DBFAE7 /* AppDelegate.swift in Sources */,
 				BF5F72FC264EBC1500DBFAE7 /* DogeTableCellTableViewCell.swift in Sources */,
 				BF5F72DE264E278D00DBFAE7 /* SceneDelegate.swift in Sources */,
+				BF5F73132651488400DBFAE7 /* CryptoListCell.swift in Sources */,
 				BF5F730A264FEB6900DBFAE7 /* TabBarVC.swift in Sources */,
 				BF5F72F6264E420F00DBFAE7 /* APIError.swift in Sources */,
 				BF5F730D2650F8CC00DBFAE7 /* HomePageVC.swift in Sources */,

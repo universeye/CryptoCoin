@@ -34,7 +34,7 @@ extension CurrencyAPI {
             return "cryptocurrency/quotes/latest" + "?" + "slug=dogecoin&CMC_PRO_API_KEY=" + SecretAPIKeys.coinMarketCap.rawValue
             
         case .cryptoTracker:
-            return "assets/BTC/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue
+            return "assets/BTC;ETH;DOGE/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue
         }
         
     }
