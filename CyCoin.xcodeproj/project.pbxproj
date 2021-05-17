@@ -29,6 +29,7 @@
 		BF5F7315265151D000DBFAE7 /* CryptoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F7314265151D000DBFAE7 /* CryptoResponse.swift */; };
 		BF5F731726515DF300DBFAE7 /* CyTrackerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */; };
 		BF5F7319265218CC00DBFAE7 /* APIKeys2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F7318265218CC00DBFAE7 /* APIKeys2.swift */; };
+		BF5F731B26521BA700DBFAE7 /* APIKeys3.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F731A26521BA700DBFAE7 /* APIKeys3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		BF5F7314265151D000DBFAE7 /* CryptoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoResponse.swift; sourceTree = "<group>"; };
 		BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyTrackerLabel.swift; sourceTree = "<group>"; };
 		BF5F7318265218CC00DBFAE7 /* APIKeys2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys2.swift; sourceTree = "<group>"; };
+		BF5F731A26521BA700DBFAE7 /* APIKeys3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +102,7 @@
 				BF5F72E4264E279000DBFAE7 /* Assets.xcassets */,
 				BF5F72E6264E279000DBFAE7 /* LaunchScreen.storyboard */,
 				BF5F72E9264E279000DBFAE7 /* Info.plist */,
-				BF5F73102650FC6A00DBFAE7 /* APIKeys.swift */,
-				BF5F7318265218CC00DBFAE7 /* APIKeys2.swift */,
+				BF5F731C265239AD00DBFAE7 /* APIKeys */,
 			);
 			path = CyCoin;
 			sourceTree = "<group>";
@@ -153,6 +154,16 @@
 				BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */,
 			);
 			path = CryptoTrack;
+			sourceTree = "<group>";
+		};
+		BF5F731C265239AD00DBFAE7 /* APIKeys */ = {
+			isa = PBXGroup;
+			children = (
+				BF5F73102650FC6A00DBFAE7 /* APIKeys.swift */,
+				BF5F7318265218CC00DBFAE7 /* APIKeys2.swift */,
+				BF5F731A26521BA700DBFAE7 /* APIKeys3.swift */,
+			);
+			path = APIKeys;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +246,7 @@
 				BF5F72F4264E3FFB00DBFAE7 /* CurrencyResponse.swift in Sources */,
 				BF5F73112650FC6A00DBFAE7 /* APIKeys.swift in Sources */,
 				BF5F72FA264E6D0800DBFAE7 /* CyLabel.swift in Sources */,
+				BF5F731B26521BA700DBFAE7 /* APIKeys3.swift in Sources */,
 				BF5F7302264FB4E000DBFAE7 /* Date+Extension.swift in Sources */,
 				BF5F72DC264E278D00DBFAE7 /* AppDelegate.swift in Sources */,
 				BF5F72FC264EBC1500DBFAE7 /* DogeTableCellTableViewCell.swift in Sources */,
