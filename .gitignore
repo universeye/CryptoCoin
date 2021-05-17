@@ -39,6 +39,7 @@ DerivedData/
 
 #Ignore API Keys
 CyCoin/APIKeys.swift
+APIKeys.swift
 
 ## Playgrounds
 timeline.xctimeline
