@@ -11,6 +11,8 @@ class CryptoListCell: UITableViewCell {
     
     static let reuseID = "cryptoListID"
     
+    private var imageURLViewModel: [String: String] = [:]
+    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = .current
@@ -36,7 +38,6 @@ class CryptoListCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureImage()
         configure()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -49,7 +50,18 @@ class CryptoListCell: UITableViewCell {
         dollar.text = string
         cryptoName.text = data[indexPath].name
         idLabel.text = data[indexPath].asset_id
+        
+        
+        
+        getImageURL {
+            if let imageUrl = self.imageURLViewModel[data[indexPath].asset_id] {
+                print("ready to start")
+                self.downloadImage(from: imageUrl)
+            }
+        }
     }
+    
+    
     
     
     private func configure() {
@@ -81,7 +93,7 @@ class CryptoListCell: UITableViewCell {
         NSLayoutConstraint.activate([
             logoImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             logoImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            logoImage.heightAnchor.constraint(equalTo: self.heightAnchor),
+            logoImage.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -10),
             logoImage.widthAnchor.constraint(equalToConstant: 50)
         ])
     }
@@ -89,53 +101,97 @@ class CryptoListCell: UITableViewCell {
     
     
     func downloadImage(from urlString: String) {
+        DispatchQueue.main.async {
+            self.showImageLoadingView()
+        }
+        
+        print("downloading image from \(urlString)")
         let cacheKey = NSString(string: urlString)
         
         if let image = cache.object(forKey: cacheKey) {
-            imageView?.image = image
-        }
-        guard let url = URL(string: urlString) else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) {  [weak self] (data, response, error) in
-            guard let self = self else { return }
-            if error != nil {
-                return
-            }
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                return
-            }
-            
-            guard let data = data else {
-                return
-            }
-            guard let image = UIImage(data: data) else {
-                return
-            }
-            
-            self.cache.setObject(image, forKey: cacheKey)
+            print("Image already set")
             DispatchQueue.main.async {
-                self.imageView?.image = image
+                self.logoImage.image = image
+            }
+            
+        } else {
+            guard let url = URL(string: urlString) else {
+                print("Invalid URL")
+                return }
+            
+            let task = URLSession.shared.dataTask(with: url) {  [weak self] (data, response, error) in
+                guard let self = self else {
+                    print("No self")
+                    return }
+                if error != nil {
+                    print(error?.localizedDescription ?? "error not nil")
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("Failed response")
+                    return
+                }
                 
+                guard let data = data else {
+                    print("no data")
+                    return
+                }
+                guard let image = UIImage(data: data) else {
+                    print("no image")
+                    return
+                }
+                
+                self.cache.setObject(image, forKey: cacheKey)
+                print("Setting Image...")
+                DispatchQueue.main.async {
+                    self.dismissLoadingView()
+                    self.logoImage.image = image
+                    
+                }
+            }
+            
+            task.resume()
+        }
+    }
+    
+    private func getImageURL(completion: @escaping () -> Void) {
+        NetworkManager.shared.getCurrency(from: .cryptoTrackerIcon) { [weak self] (results: Result<[CryptoIconResponse]
+                                                                                                   , APIError>) in
+            
+            guard let self = self else { return }
+            switch results {
+            
+            case .success(let imageurls):
+                
+                for index in 0..<40 {
+                    self.imageURLViewModel.updateValue(imageurls[index].url ?? "NA", forKey: imageurls[index].asset_id)
+                }
+                
+                
+                completion()
+            case .failure(let error):
+                print("Error fetching imageUrl: \(error.localizedDescription)")
             }
         }
+    }
+    
+    func showImageLoadingView() {
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        loadingIndicator.layer.cornerRadius = loadingIndicator.frame.size.width/2
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating()
         
-        task.resume()
+        logoImage.addSubview(loadingIndicator)
+        
+        NSLayoutConstraint.activate([
+            loadingIndicator.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor),
+            loadingIndicator.centerXAnchor.constraint(equalTo: logoImage.centerXAnchor)
+        ])
+        
     }
     
-    
-    
-    
-    
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func dismissLoadingView() {
+        loadingIndicator.removeFromSuperview()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

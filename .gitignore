@@ -1,2 +1,11 @@
 CyCoin/APIKeys/*
 APIKeys/*
+
+
+## User settings
+xcuserdata/
+
+# OSX Temp
+.DS_Store
+.AppleDouble
+.LSOverride

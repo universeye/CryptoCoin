@@ -11,6 +11,13 @@ fileprivate var containerView: UIView!
 
 extension UIViewController {
     
+    func presentAlertView() {
+        DispatchQueue.main.async {
+            let alertView = AlertScreenVC()
+            alertView.modalTransitionStyle = .crossDissolve
+            self.present(alertView, animated: true, completion: nil)
+        }
+    }
     
     func showLoadingView() {
         containerView = UIView(frame: view.bounds)

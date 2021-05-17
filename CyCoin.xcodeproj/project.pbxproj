@@ -29,6 +29,8 @@
 		BF5F731726515DF300DBFAE7 /* CyTrackerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */; };
 		BF5F731E26523B3500DBFAE7 /* APIKeys4.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F731D26523B3500DBFAE7 /* APIKeys4.swift */; };
 		BF5F73202652482400DBFAE7 /* CryptoIconResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F731F2652482400DBFAE7 /* CryptoIconResponse.swift */; };
+		BF5F732226528BEF00DBFAE7 /* AlertScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732126528BEF00DBFAE7 /* AlertScreenVC.swift */; };
+		BF5F732426528DC100DBFAE7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732326528DC100DBFAE7 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyTrackerLabel.swift; sourceTree = "<group>"; };
 		BF5F731D26523B3500DBFAE7 /* APIKeys4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys4.swift; sourceTree = "<group>"; };
 		BF5F731F2652482400DBFAE7 /* CryptoIconResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoIconResponse.swift; sourceTree = "<group>"; };
+		BF5F732126528BEF00DBFAE7 /* AlertScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertScreenVC.swift; sourceTree = "<group>"; };
+		BF5F732326528DC100DBFAE7 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 			children = (
 				BF5F72DB264E278D00DBFAE7 /* AppDelegate.swift */,
 				BF5F7309264FEB6900DBFAE7 /* TabBarVC.swift */,
+				BF5F732126528BEF00DBFAE7 /* AlertScreenVC.swift */,
 				BF5F72DD264E278D00DBFAE7 /* SceneDelegate.swift */,
 				BF5F730B2650F87A00DBFAE7 /* CryptoTrack */,
 				BF5F7306264FC29B00DBFAE7 /* DogeCoin */,
@@ -131,6 +136,7 @@
 				BF5F7301264FB4DF00DBFAE7 /* Date+Extension.swift */,
 				BF5F7303264FB59900DBFAE7 /* String+Extension.swift */,
 				BF5F730E2650FA2400DBFAE7 /* UIViewController+Extension.swift */,
+				BF5F732326528DC100DBFAE7 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -240,6 +246,7 @@
 				BF5F72E0264E278D00DBFAE7 /* ViewController.swift in Sources */,
 				BF5F730F2650FA2400DBFAE7 /* UIViewController+Extension.swift in Sources */,
 				BF5F731726515DF300DBFAE7 /* CyTrackerLabel.swift in Sources */,
+				BF5F732226528BEF00DBFAE7 /* AlertScreenVC.swift in Sources */,
 				BF5F7315265151D000DBFAE7 /* CryptoResponse.swift in Sources */,
 				BF5F72F4264E3FFB00DBFAE7 /* CurrencyResponse.swift in Sources */,
 				BF5F72FA264E6D0800DBFAE7 /* CyLabel.swift in Sources */,
@@ -247,6 +254,7 @@
 				BF5F72DC264E278D00DBFAE7 /* AppDelegate.swift in Sources */,
 				BF5F731E26523B3500DBFAE7 /* APIKeys4.swift in Sources */,
 				BF5F72FC264EBC1500DBFAE7 /* DogeTableCellTableViewCell.swift in Sources */,
+				BF5F732426528DC100DBFAE7 /* UIView+Extension.swift in Sources */,
 				BF5F72DE264E278D00DBFAE7 /* SceneDelegate.swift in Sources */,
 				BF5F73132651488400DBFAE7 /* CryptoListCell.swift in Sources */,
 				BF5F730A264FEB6900DBFAE7 /* TabBarVC.swift in Sources */,
