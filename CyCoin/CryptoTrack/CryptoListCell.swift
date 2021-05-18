@@ -11,7 +11,7 @@ class CryptoListCell: UITableViewCell {
     
     static let reuseID = "cryptoListID"
     
-    private var imageURLViewModel: [String: String] = [:]
+    
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -51,14 +51,17 @@ class CryptoListCell: UITableViewCell {
         cryptoName.text = data[indexPath].name
         idLabel.text = data[indexPath].asset_id
         
-        
-        
-        getImageURL {
-            if let imageUrl = self.imageURLViewModel[data[indexPath].asset_id] {
-                print("ready to start")
-                self.downloadImage(from: imageUrl)
-            }
+        if let imageUrl = NetworkManager.shared.imageURLViewModel[data[indexPath].asset_id] {
+            print("ready to start")
+            self.downloadImage(from: imageUrl)
         }
+        
+//        getImageURL {
+//            if let imageUrl = self.imageURLViewModel[data[indexPath].asset_id] {
+//                print("ready to start")
+//                self.downloadImage(from: imageUrl)
+//            }
+//        }
     }
     
     
@@ -112,6 +115,7 @@ class CryptoListCell: UITableViewCell {
             print("Image already set")
             DispatchQueue.main.async {
                 self.logoImage.image = image
+                self.dismissLoadingView()
             }
             
         } else {
@@ -153,27 +157,26 @@ class CryptoListCell: UITableViewCell {
             task.resume()
         }
     }
-    
-    private func getImageURL(completion: @escaping () -> Void) {
-        NetworkManager.shared.getCurrency(from: .cryptoTrackerIcon) { [weak self] (results: Result<[CryptoIconResponse]
-                                                                                                   , APIError>) in
-            
-            guard let self = self else { return }
-            switch results {
-            
-            case .success(let imageurls):
-                
-                for index in 0..<40 {
-                    self.imageURLViewModel.updateValue(imageurls[index].url ?? "NA", forKey: imageurls[index].asset_id)
-                }
-                
-                
-                completion()
-            case .failure(let error):
-                print("Error fetching imageUrl: \(error.localizedDescription)")
-            }
-        }
-    }
+//    
+//    private func getImageURL(completion: @escaping () -> Void) {
+//        NetworkManager.shared.getCurrency(from: .cryptoTrackerIcon) { [weak self] (results: Result<[CryptoIconResponse], APIError>) in
+//            
+//            guard let self = self else { return }
+//            switch results {
+//            
+//            case .success(let imageurls):
+//                
+//                for index in 0..<40 {
+//                    self.imageURLViewModel.updateValue(imageurls[index].url ?? "NA", forKey: imageurls[index].asset_id)
+//                }
+//                
+//                
+//                completion()
+//            case .failure(let error):
+//                print("Error fetching imageUrl: \(error.localizedDescription)")
+//            }
+//        }
+//    }
     
     func showImageLoadingView() {
         loadingIndicator.hidesWhenStopped = true

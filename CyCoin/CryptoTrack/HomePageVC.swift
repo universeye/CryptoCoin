@@ -31,9 +31,19 @@ class HomePageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getCurrency()
+       
+        getCurrency() {}
         configureHomePageVC()
-        configureTableView()
+        //configureTableView()
+        NetworkManager.shared.getImageURL {
+            print("finish getting img url")
+            DispatchQueue.main.async {
+                self.configureTableView()
+                self.dimissLoadingView()
+            }
+            
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,6 +61,16 @@ class HomePageVC: UIViewController {
     private func configureHomePageVC() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        let alertbutton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(presentalert))
+        navigationItem.rightBarButtonItem = alertbutton
+    }
+    
+    @objc func presentalert() {
+        DispatchQueue.main.async {
+            self.presentAlertView()
+        }
+       
     }
     
     private func configureTableView() {
@@ -68,7 +88,7 @@ class HomePageVC: UIViewController {
     
     
     //MARK: - Functional
-    private func getCurrency() {
+    private func getCurrency(completion: @escaping () -> Void) {
         DispatchQueue.main.async {
             self.showLoadingView()
         }
@@ -80,15 +100,17 @@ class HomePageVC: UIViewController {
             case .success(let data):
                 self.data = data
                 DispatchQueue.main.async {
-                    self.dimissLoadingView()
+                    //self.dimissLoadingView()
                     self.refreshControl.endRefreshing()
                     self.tableView.reloadData()
+                    completion()
                 }
                 
             case .failure(let apiError):
                 DispatchQueue.main.async {
-                    self.dimissLoadingView()
+                    //self.dimissLoadingView()
                     self.refreshControl.endRefreshing()
+                    completion()
                 }
                 self.presentAlertView()
                 print("Error getting currency: \(apiError.rawValue)")
@@ -99,7 +121,11 @@ class HomePageVC: UIViewController {
     @objc func refresh(_ sender: AnyObject) {
         // Code to refresh table view
         print("refreshing....")
-        getCurrency()
+        getCurrency() {
+            DispatchQueue.main.async {
+                self.dimissLoadingView()
+            }
+        }
     }
     
 }

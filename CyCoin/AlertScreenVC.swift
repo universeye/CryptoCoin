@@ -13,14 +13,23 @@ class AlertScreenVC: UIViewController {
     let titleLabel = CyTrackerLabel(textSize: 30, textAlignment: .center, textColor: .black)
     let bodyLabel = CyTrackerLabel(textSize: 18, textAlignment: .center, textColor: .systemGray)
     let containerView = UIView()
+    let okButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.layer.cornerRadius = 16
+        button.setTitle("Ok", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemPink
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemGray
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
         configureContainerView()
         configureImage()
         configureLabel()
+        configureButton()
     }
     
     init() {
@@ -84,6 +93,23 @@ class AlertScreenVC: UIViewController {
         
         ])
         
+    }
+    
+    private func configureButton() {
+        okButton.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(okButton)
+        okButton.addTarget(self, action: #selector(dismissAlertView), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            okButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+            okButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            okButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            okButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    @objc func dismissAlertView() {
+        dismiss(animated: true, completion: nil)
     }
     
 }

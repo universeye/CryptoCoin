@@ -12,7 +12,7 @@ final class NetworkManager {
     
     static let shared = NetworkManager()
     let cache = NSCache<NSString, UIImage>()
-    
+    public var imageURLViewModel: [String: String] = [:]
     
     private init () {
         
@@ -60,6 +60,26 @@ final class NetworkManager {
         }
         task.resume()
         
+    }
+    
+    func getImageURL(completion: @escaping () -> Void) {
+        getCurrency(from: .cryptoTrackerIcon) { [weak self] (results: Result<[CryptoIconResponse], APIError>) in
+            
+            guard let self = self else { return }
+            switch results {
+            
+            case .success(let imageurls):
+                print("success getting image")
+                for index in 0..<40 {
+                    self.imageURLViewModel.updateValue(imageurls[index].url ?? "NA", forKey: imageurls[index].asset_id)
+                }
+                
+                
+                completion()
+            case .failure(let error):
+                print("Error fetching imageUrl: \(error.localizedDescription)")
+            }
+        }
     }
         
 }

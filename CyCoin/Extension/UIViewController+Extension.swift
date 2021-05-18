@@ -15,6 +15,7 @@ extension UIViewController {
         DispatchQueue.main.async {
             let alertView = AlertScreenVC()
             alertView.modalTransitionStyle = .crossDissolve
+            alertView.modalPresentationStyle = .overFullScreen
             self.present(alertView, animated: true, completion: nil)
         }
     }
