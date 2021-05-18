@@ -24,9 +24,6 @@ class HomePageVC: UIViewController {
     }()
     
     
-    
-    
-    
     //MARK: - Apps Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +60,10 @@ class HomePageVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         let alertbutton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(presentalert))
-        navigationItem.rightBarButtonItem = alertbutton
+        navigationItem.leftBarButtonItem = alertbutton
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItems))
+        navigationItem.rightBarButtonItem = addButton
     }
     
     @objc func presentalert() {
@@ -71,6 +71,10 @@ class HomePageVC: UIViewController {
             self.presentAlertView()
         }
        
+    }
+    
+    @objc func addItems() {
+        
     }
     
     private func configureTableView() {
@@ -98,7 +102,9 @@ class HomePageVC: UIViewController {
             switch results {
             
             case .success(let data):
-                self.data = data
+                self.data = data.sorted(by: { first, second -> Bool in
+                    return first.price_usd ?? 0 > second.price_usd ?? 0
+                })
                 DispatchQueue.main.async {
                     //self.dimissLoadingView()
                     self.refreshControl.endRefreshing()

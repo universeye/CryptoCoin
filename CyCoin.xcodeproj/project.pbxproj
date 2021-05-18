@@ -31,6 +31,7 @@
 		BF5F73202652482400DBFAE7 /* CryptoIconResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F731F2652482400DBFAE7 /* CryptoIconResponse.swift */; };
 		BF5F732226528BEF00DBFAE7 /* AlertScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732126528BEF00DBFAE7 /* AlertScreenVC.swift */; };
 		BF5F732426528DC100DBFAE7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732326528DC100DBFAE7 /* UIView+Extension.swift */; };
+		BF5F732626539B5C00DBFAE7 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732526539B5C00DBFAE7 /* PersistanceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		BF5F731F2652482400DBFAE7 /* CryptoIconResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoIconResponse.swift; sourceTree = "<group>"; };
 		BF5F732126528BEF00DBFAE7 /* AlertScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertScreenVC.swift; sourceTree = "<group>"; };
 		BF5F732326528DC100DBFAE7 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		BF5F732526539B5C00DBFAE7 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				BF5F730C2650F8CC00DBFAE7 /* HomePageVC.swift */,
 				BF5F73122651488400DBFAE7 /* CryptoListCell.swift */,
 				BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */,
+				BF5F732526539B5C00DBFAE7 /* PersistanceManager.swift */,
 			);
 			path = CryptoTrack;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				BF5F7315265151D000DBFAE7 /* CryptoResponse.swift in Sources */,
 				BF5F72F4264E3FFB00DBFAE7 /* CurrencyResponse.swift in Sources */,
 				BF5F72FA264E6D0800DBFAE7 /* CyLabel.swift in Sources */,
+				BF5F732626539B5C00DBFAE7 /* PersistanceManager.swift in Sources */,
 				BF5F7302264FB4E000DBFAE7 /* Date+Extension.swift in Sources */,
 				BF5F72DC264E278D00DBFAE7 /* AppDelegate.swift in Sources */,
 				BF5F731E26523B3500DBFAE7 /* APIKeys4.swift in Sources */,

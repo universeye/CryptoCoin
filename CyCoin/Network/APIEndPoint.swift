@@ -17,8 +17,11 @@ enum CurrencyAPI {
 extension CurrencyAPI {
     
     var cyptoCoin: String {
-        return "BTC;ETH;DOGE;XRP;NMC;USDT"
+        return "BTC;ETH;DOGE;XRP;NMC;USDT;LTC;ZEC;BCH;MKR"
     }
+    
+    
+    
     
     var urlRequest: URLRequest {
         return URLRequest(url: URL(string: self.baseURL.appendingPathComponent(self.path).absoluteString.removingPercentEncoding!)!)
@@ -40,7 +43,11 @@ extension CurrencyAPI {
             return "cryptocurrency/quotes/latest" + "?" + "slug=dogecoin&CMC_PRO_API_KEY=" + SecretAPIKeys.coinMarketCap.rawValue
             
         case .cryptoTracker:
-            return "assets/" + self.cyptoCoin + "/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue
+           
+            return "assets/" + PersistanceManager.shared.cryptoCoinArray.joined(separator: ";") + "/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue
+                
+            
+            
         
         case .cryptoTrackerIcon:
             return "assets/icons/55/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue

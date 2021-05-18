@@ -12,7 +12,9 @@ class CryptoListCell: UITableViewCell {
     static let reuseID = "cryptoListID"
     
     
+    //MARK: - Properties
     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    
     static let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.locale = .current
@@ -34,6 +36,8 @@ class CryptoListCell: UITableViewCell {
     let idLabel = CyTrackerLabel(textSize: 15, textAlignment: .left, textColor: .gray)
     let dollar = CyTrackerLabel(textSize: 20, textAlignment: .right, textColor: .systemGreen)
     
+    
+    //MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureImage()
@@ -52,21 +56,13 @@ class CryptoListCell: UITableViewCell {
         idLabel.text = data[indexPath].asset_id
         
         if let imageUrl = NetworkManager.shared.imageURLViewModel[data[indexPath].asset_id] {
-            print("ready to start")
             self.downloadImage(from: imageUrl)
         }
-        
-//        getImageURL {
-//            if let imageUrl = self.imageURLViewModel[data[indexPath].asset_id] {
-//                print("ready to start")
-//                self.downloadImage(from: imageUrl)
-//            }
-//        }
     }
     
     
     
-    
+    //MARK: - Configuring UI
     private func configure() {
         addSubview(cryptoName)
         addSubview(dollar)
@@ -102,17 +98,14 @@ class CryptoListCell: UITableViewCell {
     }
     
     
-    
+    //MARK: - Functional
     func downloadImage(from urlString: String) {
         DispatchQueue.main.async {
             self.showImageLoadingView()
         }
-        
-        print("downloading image from \(urlString)")
         let cacheKey = NSString(string: urlString)
         
         if let image = cache.object(forKey: cacheKey) {
-            print("Image already set")
             DispatchQueue.main.async {
                 self.logoImage.image = image
                 self.dismissLoadingView()
@@ -124,9 +117,7 @@ class CryptoListCell: UITableViewCell {
                 return }
             
             let task = URLSession.shared.dataTask(with: url) {  [weak self] (data, response, error) in
-                guard let self = self else {
-                    print("No self")
-                    return }
+                guard let self = self else { return }
                 if error != nil {
                     print(error?.localizedDescription ?? "error not nil")
                     return
@@ -146,38 +137,17 @@ class CryptoListCell: UITableViewCell {
                 }
                 
                 self.cache.setObject(image, forKey: cacheKey)
-                print("Setting Image...")
                 DispatchQueue.main.async {
                     self.dismissLoadingView()
                     self.logoImage.image = image
-                    
                 }
             }
-            
             task.resume()
         }
     }
-//    
-//    private func getImageURL(completion: @escaping () -> Void) {
-//        NetworkManager.shared.getCurrency(from: .cryptoTrackerIcon) { [weak self] (results: Result<[CryptoIconResponse], APIError>) in
-//            
-//            guard let self = self else { return }
-//            switch results {
-//            
-//            case .success(let imageurls):
-//                
-//                for index in 0..<40 {
-//                    self.imageURLViewModel.updateValue(imageurls[index].url ?? "NA", forKey: imageurls[index].asset_id)
-//                }
-//                
-//                
-//                completion()
-//            case .failure(let error):
-//                print("Error fetching imageUrl: \(error.localizedDescription)")
-//            }
-//        }
-//    }
     
+    
+    //MARK: - Image Loading View
     func showImageLoadingView() {
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)

@@ -69,8 +69,7 @@ final class NetworkManager {
             switch results {
             
             case .success(let imageurls):
-                print("success getting image")
-                for index in 0..<40 {
+                for index in 0..<200 {
                     self.imageURLViewModel.updateValue(imageurls[index].url ?? "NA", forKey: imageurls[index].asset_id)
                 }
                 
