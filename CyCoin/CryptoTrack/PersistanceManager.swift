@@ -10,5 +10,5 @@ import Foundation
 struct PersistanceManager {
     static var shared = PersistanceManager()
     
-    var cryptoCoinArray: [String] =  ["BTC","ETH"]
+    var cryptoCoinArray: Set<String> =  ["BTC","ETH"]
 }

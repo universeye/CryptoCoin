@@ -9,9 +9,12 @@ import UIKit
 
 class CoinPickerVC: UIViewController {
 
-    //cancel Button
-    //Title Label
-    //alert label
+    //cancel Button DONE
+    //Title Label DONE
+    //alert label DONE
+    //card shadow DONE
+    //array no same items DONE
+    
     //HomepageVC reload
     //delete action
     //core data save
@@ -66,8 +69,14 @@ class CoinPickerVC: UIViewController {
         containerView.layer.cornerRadius = 16
         view.addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.layer.borderWidth = 1
-        containerView.layer.borderColor = UIColor.black.cgColor
+        //containerView.layer.borderWidth = 1
+        //containerView.layer.borderColor = UIColor.black.cgColor
+        
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOffset = .zero
+        containerView.layer.shadowRadius = 20
+        containerView.layer.shadowOpacity = 0.6
+        
         
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -106,10 +115,10 @@ class CoinPickerVC: UIViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-        pickerView.setValue(UIColor.label, forKeyPath: "textColor")
+        pickerView.setValue(UIColor(named: "pickerLabel"), forKeyPath: "textColor")
         
         NSLayoutConstraint.activate([
-            pickerView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 50),
+            pickerView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 80),
             pickerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             pickerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             pickerView.heightAnchor.constraint(equalToConstant: 100)
@@ -146,8 +155,8 @@ class CoinPickerVC: UIViewController {
     
     @objc func addButtonPressed() {
         if !selectedCoin.isEmpty {
-            PersistanceManager.shared.cryptoCoinArray.append(selectedCoin)
-            print("Current array: \(PersistanceManager.shared.cryptoCoinArray)")
+            PersistanceManager.shared.cryptoCoinArray.insert(selectedCoin)
+            print("Current set: \(PersistanceManager.shared.cryptoCoinArray)")
             dismiss(animated: true, completion: nil)
         } else {
             bodyLabel.text = "please select a coin!"
