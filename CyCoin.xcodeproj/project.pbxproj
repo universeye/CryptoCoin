@@ -32,6 +32,7 @@
 		BF5F732226528BEF00DBFAE7 /* AlertScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732126528BEF00DBFAE7 /* AlertScreenVC.swift */; };
 		BF5F732426528DC100DBFAE7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732326528DC100DBFAE7 /* UIView+Extension.swift */; };
 		BF5F732626539B5C00DBFAE7 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732526539B5C00DBFAE7 /* PersistanceManager.swift */; };
+		BF6B048B2654D2C8002A9B4A /* CoinPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B048A2654D2C8002A9B4A /* CoinPickerVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		BF5F732126528BEF00DBFAE7 /* AlertScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertScreenVC.swift; sourceTree = "<group>"; };
 		BF5F732326528DC100DBFAE7 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		BF5F732526539B5C00DBFAE7 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
+		BF6B048A2654D2C8002A9B4A /* CoinPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPickerVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				BF5F73122651488400DBFAE7 /* CryptoListCell.swift */,
 				BF5F731626515DF200DBFAE7 /* CyTrackerLabel.swift */,
 				BF5F732526539B5C00DBFAE7 /* PersistanceManager.swift */,
+				BF6B048A2654D2C8002A9B4A /* CoinPickerVC.swift */,
 			);
 			path = CryptoTrack;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6B048B2654D2C8002A9B4A /* CoinPickerVC.swift in Sources */,
 				BF5F72F0264E2AFC00DBFAE7 /* NetworkManager.swift in Sources */,
 				BF5F7304264FB59900DBFAE7 /* String+Extension.swift in Sources */,
 				BF5F72F2264E317C00DBFAE7 /* APIEndPoint.swift in Sources */,

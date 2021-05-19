@@ -28,7 +28,7 @@ class HomePageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        
         getCurrency() {}
         configureHomePageVC()
         //configureTableView()
@@ -59,7 +59,7 @@ class HomePageVC: UIViewController {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        let alertbutton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(presentalert))
+        let alertbutton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(presentalert))
         navigationItem.leftBarButtonItem = alertbutton
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItems))
@@ -67,14 +67,23 @@ class HomePageVC: UIViewController {
     }
     
     @objc func presentalert() {
-        DispatchQueue.main.async {
-            self.presentAlertView()
-        }
-       
+        
+        self.presentAlertView()
+        
+        
     }
     
     @objc func addItems() {
-        
+        self.presentCoinPicker()
+    }
+    
+    func presentCoinPicker() {
+        DispatchQueue.main.async {
+            let pickerView = CoinPickerVC()
+            pickerView.modalTransitionStyle = .coverVertical
+            pickerView.modalPresentationStyle = .overFullScreen
+            self.present(pickerView, animated: true, completion: nil)
+        }
     }
     
     private func configureTableView() {

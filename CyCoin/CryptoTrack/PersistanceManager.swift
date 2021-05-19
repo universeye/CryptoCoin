@@ -8,9 +8,7 @@
 import Foundation
 
 struct PersistanceManager {
-    static let shared = PersistanceManager()
+    static var shared = PersistanceManager()
     
-    var cryptoCoinArray: [String] {
-        return ["BTC","ETH"]
-    }
+    var cryptoCoinArray: [String] =  ["BTC","ETH"]
 }
