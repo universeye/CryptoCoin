@@ -18,7 +18,7 @@ class AlertScreenVC: UIViewController {
         button.layer.cornerRadius = 16
         button.setTitle("Ok", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemPink
+        button.backgroundColor = Colors.buttonColor
         return button
     }()
     
@@ -56,7 +56,7 @@ class AlertScreenVC: UIViewController {
     }
     
     private func configureImage() {
-        alertImage.image = UIImage(systemName: "exclamationmark.triangle.fill")
+        alertImage.image = UIImage(systemName: SFSymbols.alertImage)
         alertImage.contentMode = .scaleAspectFit
         alertImage.tintColor = .black
         containerView.addSubview(alertImage)

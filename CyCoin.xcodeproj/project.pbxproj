@@ -33,6 +33,7 @@
 		BF5F732426528DC100DBFAE7 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732326528DC100DBFAE7 /* UIView+Extension.swift */; };
 		BF5F732626539B5C00DBFAE7 /* PersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5F732526539B5C00DBFAE7 /* PersistanceManager.swift */; };
 		BF6B048B2654D2C8002A9B4A /* CoinPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B048A2654D2C8002A9B4A /* CoinPickerVC.swift */; };
+		BF6B048D26555CB0002A9B4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6B048C26555CB0002A9B4A /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		BF5F732326528DC100DBFAE7 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		BF5F732526539B5C00DBFAE7 /* PersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceManager.swift; sourceTree = "<group>"; };
 		BF6B048A2654D2C8002A9B4A /* CoinPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPickerVC.swift; sourceTree = "<group>"; };
+		BF6B048C26555CB0002A9B4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				BF5F72DB264E278D00DBFAE7 /* AppDelegate.swift */,
 				BF5F7309264FEB6900DBFAE7 /* TabBarVC.swift */,
+				BF6B048C26555CB0002A9B4A /* Constants.swift */,
 				BF5F732126528BEF00DBFAE7 /* AlertScreenVC.swift */,
 				BF5F72DD264E278D00DBFAE7 /* SceneDelegate.swift */,
 				BF5F730B2650F87A00DBFAE7 /* CryptoTrack */,
@@ -268,6 +271,7 @@
 				BF5F730A264FEB6900DBFAE7 /* TabBarVC.swift in Sources */,
 				BF5F72F6264E420F00DBFAE7 /* APIError.swift in Sources */,
 				BF5F730D2650F8CC00DBFAE7 /* HomePageVC.swift in Sources */,
+				BF6B048D26555CB0002A9B4A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

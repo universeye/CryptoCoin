@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CoinPickerVCDelegate {
+    func didAddCoin()
+}
+
 class CoinPickerVC: UIViewController {
 
     //cancel Button DONE
@@ -15,9 +19,13 @@ class CoinPickerVC: UIViewController {
     //card shadow DONE
     //array no same items DONE
     
-    //HomepageVC reload
-    //delete action
+    //HomepageVC reload DONE
+    //delete action DONE
     //core data save
+    //Launch animation
+    //price title color based on last coin
+    
+    //MARK: - Properties
     private let titleLabel = CyTrackerLabel(textSize: 25, textAlignment: .left, textColor: .black)
     private let bodyLabel = CyTrackerLabel(textSize: 15, textAlignment: .left, textColor: .systemRed)
     private let coins: [String] = ["BTC", "ETH", "DOGE", "XRP", "NMC", "USDT", "LTC", "ZEC", "BCH", "MKR"]
@@ -25,12 +33,13 @@ class CoinPickerVC: UIViewController {
     private let pickerView = UIPickerView()
     private let containerView = UIView()
     
+    var delegate: CoinPickerVCDelegate!
     private let okButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.layer.cornerRadius = 16
         button.setTitle("Add", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .systemPink
+        button.backgroundColor = Colors.buttonColor
         return button
     }()
     
@@ -43,6 +52,7 @@ class CoinPickerVC: UIViewController {
         return button
     }()
     
+    //MARK: - Apps Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +65,7 @@ class CoinPickerVC: UIViewController {
         configurePicker()
     }
     
+    //MARK: - Initializers
     init() {
         super.init(nibName: nil, bundle: nil)
         
@@ -64,6 +75,8 @@ class CoinPickerVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    //MARK: - UI Configuration
     private func configureContainerView() {
         containerView.backgroundColor = UIColor.white
         containerView.layer.cornerRadius = 16
@@ -101,6 +114,7 @@ class CoinPickerVC: UIViewController {
     private func configureBodyLabel() {
         containerView.addSubview(bodyLabel)
         bodyLabel.text = "" //please select a coin!
+        bodyLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
         
         NSLayoutConstraint.activate([
             bodyLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
@@ -115,7 +129,7 @@ class CoinPickerVC: UIViewController {
         pickerView.delegate = self
         pickerView.dataSource = self
         pickerView.translatesAutoresizingMaskIntoConstraints = false
-        pickerView.setValue(UIColor(named: "pickerLabel"), forKeyPath: "textColor")
+        pickerView.setValue(Colors.pickerColor, forKeyPath: "textColor")
         
         NSLayoutConstraint.activate([
             pickerView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 80),
@@ -127,9 +141,6 @@ class CoinPickerVC: UIViewController {
 
    
     
-    
-    
-        
     private func configureButton() {
         okButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(okButton)
@@ -153,11 +164,14 @@ class CoinPickerVC: UIViewController {
         ])
     }
     
+    //MARK: - Functional
     @objc func addButtonPressed() {
         if !selectedCoin.isEmpty {
             PersistanceManager.shared.cryptoCoinArray.insert(selectedCoin)
+            #warning("Save the array here")
             print("Current set: \(PersistanceManager.shared.cryptoCoinArray)")
             dismiss(animated: true, completion: nil)
+            delegate.didAddCoin()
         } else {
             bodyLabel.text = "please select a coin!"
         }
@@ -187,6 +201,6 @@ extension CoinPickerVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedCoin = coins[row]
-        print("selected coin: \(selectedCoin)")
+        
     }
 }

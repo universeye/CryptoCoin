@@ -28,6 +28,8 @@ class HomePageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ///PersistanceManager.shared.cryptoCoinArray = []
+        #warning("Save the coredata's set into persistenceManager")
         
         getCurrency() {}
         configureHomePageVC()
@@ -67,10 +69,7 @@ class HomePageVC: UIViewController {
     }
     
     @objc func presentalert() {
-        
         self.presentAlertView()
-        
-        
     }
     
     @objc func addItems() {
@@ -80,6 +79,7 @@ class HomePageVC: UIViewController {
     func presentCoinPicker() {
         DispatchQueue.main.async {
             let pickerView = CoinPickerVC()
+            pickerView.delegate = self
             pickerView.modalTransitionStyle = .coverVertical
             pickerView.modalPresentationStyle = .overFullScreen
             self.present(pickerView, animated: true, completion: nil)
@@ -165,6 +165,34 @@ extension HomePageVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    //delete coin
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard  editingStyle == .delete else {
+            return
+        }
+        
+        PersistanceManager.shared.cryptoCoinArray.remove(data[indexPath.row].asset_id)
+        #warning("save the array to coredata here")
+        getCurrency() {
+            DispatchQueue.main.async {
+                self.dimissLoadingView()
+            }
+        }
+    }
+    
+}
+
+
+//MARK: - CoinPickerVCDelegate
+extension HomePageVC: CoinPickerVCDelegate {
+    func didAddCoin() {
+        getCurrency() {
+            DispatchQueue.main.async {
+                self.dimissLoadingView()
+            }
+        }
     }
     
     

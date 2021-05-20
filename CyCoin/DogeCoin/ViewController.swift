@@ -30,25 +30,9 @@ class ViewController: UIViewController {
         return formatter
     }()
     
-    //    static let dateFormatter: ISO8601DateFormatter = {
-    //        let formatter = ISO8601DateFormatter()
-    //        formatter.formatOptions = .withFractionalSeconds
-    //        formatter.timeZone = .current
-    //        return formatter
-    //    }()
-    //    static let prettydateFormatter: DateFormatter = {
-    //        let formatter = DateFormatter()
-    //        formatter.locale = .current
-    //        formatter.timeZone = .current
-    //        formatter.dateFormat = "MMM d, yyyy"
-    //        return formatter
-    //    }()
-    
     //MARK: - App LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         getCurrency()
         
     }
