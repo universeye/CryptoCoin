@@ -15,7 +15,7 @@ class HomePageVC: UIViewController {
     //MARK: - Properties
     private var data: [CryptoResponse] = []
     private var refreshControl = UIRefreshControl()
-    
+    private var count = 1
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -28,32 +28,45 @@ class HomePageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ///PersistanceManager.shared.cryptoCoinArray = []
-        #warning("Save the coredata's set into persistenceManager")
-        
-        getCurrency() {}
         configureHomePageVC()
-        //configureTableView()
         NetworkManager.shared.getImageURL {
             print("finish getting img url")
             DispatchQueue.main.async {
-                self.configureTableView()
-                self.dimissLoadingView()
+                self.configureTableView() {
+                    print("finish configuring tableView")
+                    self.dimissLoadingView()
+                }
+                
             }
-            
         }
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         tableView.frame = view.bounds
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        if count == 1 {
+            getUserDefaultsResults() {
+                self.getCurrency() {
+                   print("finish getting currency")
+                }
+            }
+            count += 1
+        }
+    }
+    
+    func getUserDefaultsResults(completion: () -> Void) {
+        let result = PersistanceManager.shared.getTheSetArray()
+        if result.isEmpty {
+            PersistanceManager.shared.saveTheSetArray()
+            completion()
+        } else {
+            PersistanceManager.shared.coinSet = result
+            completion()
+        }
     }
     
     //MARK: - UI layout
@@ -86,7 +99,7 @@ class HomePageVC: UIViewController {
         }
     }
     
-    private func configureTableView() {
+    private func configureTableView(completiob: () -> Void) {
         view.addSubview(tableView)
         tableView.rowHeight = 60
         tableView.delegate = self
@@ -95,6 +108,7 @@ class HomePageVC: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
+        completiob()
     }
     
     
@@ -173,8 +187,8 @@ extension HomePageVC: UITableViewDelegate, UITableViewDataSource {
             return
         }
         
-        PersistanceManager.shared.cryptoCoinArray.remove(data[indexPath.row].asset_id)
-        #warning("save the array to coredata here")
+        PersistanceManager.shared.coinSet.remove(data[indexPath.row].asset_id)
+        PersistanceManager.shared.saveTheSetArray()
         getCurrency() {
             DispatchQueue.main.async {
                 self.dimissLoadingView()

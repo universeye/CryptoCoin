@@ -108,7 +108,7 @@ class CryptoListCell: UITableViewCell {
         if let image = cache.object(forKey: cacheKey) {
             DispatchQueue.main.async {
                 self.logoImage.image = image
-                self.dismissLoadingView()
+                self.dismissImageLoadingView()
             }
             
         } else {
@@ -138,7 +138,7 @@ class CryptoListCell: UITableViewCell {
                 
                 self.cache.setObject(image, forKey: cacheKey)
                 DispatchQueue.main.async {
-                    self.dismissLoadingView()
+                    self.dismissImageLoadingView()
                     self.logoImage.image = image
                 }
             }
@@ -149,8 +149,9 @@ class CryptoListCell: UITableViewCell {
     
     //MARK: - Image Loading View
     func showImageLoadingView() {
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.75)
+        loadingIndicator.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.65)
         loadingIndicator.layer.cornerRadius = loadingIndicator.frame.size.width/2
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
         loadingIndicator.startAnimating()
@@ -164,7 +165,7 @@ class CryptoListCell: UITableViewCell {
         
     }
     
-    func dismissLoadingView() {
+    func dismissImageLoadingView() {
         loadingIndicator.removeFromSuperview()
     }
 }

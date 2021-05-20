@@ -21,7 +21,7 @@ class CoinPickerVC: UIViewController {
     
     //HomepageVC reload DONE
     //delete action DONE
-    //core data save
+    //core data save DONE
     //Launch animation
     //price title color based on last coin
     
@@ -167,9 +167,8 @@ class CoinPickerVC: UIViewController {
     //MARK: - Functional
     @objc func addButtonPressed() {
         if !selectedCoin.isEmpty {
-            PersistanceManager.shared.cryptoCoinArray.insert(selectedCoin)
-            #warning("Save the array here")
-            print("Current set: \(PersistanceManager.shared.cryptoCoinArray)")
+            PersistanceManager.shared.coinSet.insert(selectedCoin)
+            PersistanceManager.shared.saveTheSetArray()
             dismiss(animated: true, completion: nil)
             delegate.didAddCoin()
         } else {

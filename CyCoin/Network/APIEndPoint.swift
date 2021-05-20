@@ -44,7 +44,7 @@ extension CurrencyAPI {
             
         case .cryptoTracker:
            
-            return "assets/" + PersistanceManager.shared.cryptoCoinArray.joined(separator: ";") + "/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue
+            return "assets/" + PersistanceManager.shared.coinSet.joined(separator: ";") + "/?apikey=" + SecretAPIKeys.CoinAPIio.rawValue
                 
             
             
