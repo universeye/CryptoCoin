@@ -74,8 +74,8 @@ class HomePageVC: UIViewController {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        let alertbutton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(presentalert))
-        navigationItem.leftBarButtonItem = alertbutton
+//        let alertbutton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(presentalert))
+//        navigationItem.leftBarButtonItem = alertbutton
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItems))
         navigationItem.rightBarButtonItem = addButton
@@ -137,7 +137,7 @@ class HomePageVC: UIViewController {
                 
             case .failure(let apiError):
                 DispatchQueue.main.async {
-                    //self.dimissLoadingView()
+                    self.dimissLoadingView()
                     self.refreshControl.endRefreshing()
                     completion()
                 }
