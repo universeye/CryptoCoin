@@ -35,6 +35,7 @@ An app displays the cryptocurrency price you chose, and a dedicated dogecoin pag
 
 ### To-Do
 * Select on the row to show currency details.
+* Price colors change depending on the value increased or decreased
 
 ### Bugs
 * There's a bug in the DogeCoin page that Date added value isn't correct.
